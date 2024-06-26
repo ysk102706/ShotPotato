@@ -1,4 +1,4 @@
-#include "Window.h"
+#include "Engine.h"
 
 int WINAPI wWinMain(
 	HINSTANCE hInstance,
@@ -6,9 +6,9 @@ int WINAPI wWinMain(
 	PWSTR pCmdLine,
 	int nCmdShow)
 {
-	Window::InitWindow(hInstance, 1280, 800, L"Shot Potato");
+	Engine engine = Engine(hInstance, 1280, 8000, L"Show Potato");
 
-	while (1) {}
+	engine.Run();
 
 	return 0;
 }
