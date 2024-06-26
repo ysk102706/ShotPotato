@@ -13,5 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\MainEngine">
+      <UniqueIdentifier>{70752037-a133-4701-b872-03d6e3df317f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\MainEngine">
+      <UniqueIdentifier>{9d0f5ae1-8d09-4310-b49f-967459b3d950}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일\MainEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>소스 파일\MainEngine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Window.h">
+      <Filter>헤더 파일\MainEngine</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
