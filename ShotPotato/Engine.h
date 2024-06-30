@@ -3,6 +3,8 @@
 #include <d3d11.h>
 #include <d3dcompiler.h>
 #include <wrl.h>
+#include "Mesh.h"
+#include "BasicShader.h"
 
 using Microsoft::WRL::ComPtr;
 
@@ -26,5 +28,5 @@ private:
 	ComPtr<ID3D11RenderTargetView> renderTargetView;
 	D3D11_VIEWPORT viewport;
 
-	int vertexCount = 0;
+	Mesh mesh;
 };

@@ -35,15 +35,30 @@ void Engine::Update() {
 
 }
 
-void Engine::Draw() {
-	float backgroundColor[4] = { 0.1f, 0.5f, 0.1f, 1 };
+void Engine::Draw()
+{
+	float backgroundColor[4] = { 0, 0.75f, 0, 1 };
 
+	// 렌더링 대상을 해당 색으로 채움
 	deviceContext.Get()->ClearRenderTargetView(renderTargetView.Get(), backgroundColor);
 
+	// 쉐이더 바인딩
+	BasicShader::Bind(deviceContext.Get());
+
+	// 렌더링
+	mesh.RenderBuffers(deviceContext.Get());
+
+	// 버퍼 바꾸기
 	swapChain.Get()->Present(1, 0);
 }
 
-bool Engine::InitScene() {
+bool Engine::InitScene()
+{
+	// 쉐이더 컴파일 및 생성
+	// 메시 정점 데이터 초기화
+	if (!BasicShader::Compile(device.Get())) return false;
+	if (!BasicShader::Create(device.Get())) return false;
+	if (!mesh.InitBuffers(device.Get(), BasicShader::ShaderBuffer()));
 	return true;
 }
 
