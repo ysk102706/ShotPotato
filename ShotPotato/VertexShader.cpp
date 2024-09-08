@@ -1,5 +1,9 @@
 #include "VertexShader.h"
 
+VertexShader::VertexShader() {
+
+}
+
 VertexShader::VertexShader(std::wstring filename) : Shader(filename, "VS", "vs_5_0"), vs(0) {
 
 }

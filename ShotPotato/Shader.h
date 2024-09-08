@@ -8,6 +8,7 @@ using Microsoft::WRL::ComPtr;
 
 class Shader {
 public:
+	Shader();
 	Shader(std::wstring filename, std::string entry, std::string profile);
 
 	virtual bool Compile(ID3D11Device* device) = 0;

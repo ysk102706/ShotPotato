@@ -43,10 +43,10 @@ void Engine::Draw()
 	deviceContext.Get()->ClearRenderTargetView(renderTargetView.Get(), backgroundColor);
 
 	// 쉐이더 바인딩
-	BasicShader::Bind(deviceContext.Get());
+	textureShader.Bind(deviceContext.Get());
 
 	// 렌더링
-	mesh.RenderBuffers(deviceContext.Get());
+	meshUV.RenderBuffers(deviceContext.Get());
 
 	// 버퍼 바꾸기
 	swapChain.Get()->Present(1, 0);
@@ -56,9 +56,8 @@ bool Engine::InitScene()
 {
 	// 쉐이더 컴파일 및 생성
 	// 메시 정점 데이터 초기화
-	if (!BasicShader::Compile(device.Get())) return false;
-	if (!BasicShader::Create(device.Get())) return false;
-	if (!mesh.InitBuffers(device.Get(), BasicShader::ShaderBuffer()));
+	if (!textureShader.Init(device.Get(), L"potato.png")) return false;
+	if (!meshUV.InitBuffers(device.Get(), textureShader.ShaderBuffer())) return false;
 	return true;
 }
 
