@@ -3,8 +3,7 @@
 #include <d3d11.h>
 #include <d3dcompiler.h>
 #include <wrl.h>
-#include "MeshUV.h"
-#include "BasicShader.h"
+#include "ModelUV.h"
 #include "TextureMappingShader.h"
 
 using Microsoft::WRL::ComPtr;
@@ -31,5 +30,5 @@ private:
 
 	TextureMappingShader textureShader;
 
-	MeshUV meshUV;
+	ModelUV modelUV;
 };

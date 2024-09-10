@@ -32,32 +32,27 @@ int Engine::Run() {
 }
 
 void Engine::Update() {
-
+	modelUV.UpdateBuffers(deviceContext.Get());
 }
 
 void Engine::Draw()
 {
 	float backgroundColor[4] = { 0, 0.75f, 0, 1 };
 
-	// 렌더링 대상을 해당 색으로 채움
 	deviceContext.Get()->ClearRenderTargetView(renderTargetView.Get(), backgroundColor);
 
-	// 쉐이더 바인딩
 	textureShader.Bind(deviceContext.Get());
 
-	// 렌더링
-	meshUV.RenderBuffers(deviceContext.Get());
+	modelUV.RenderBuffers(deviceContext.Get());
 
-	// 버퍼 바꾸기
 	swapChain.Get()->Present(1, 0);
 }
 
 bool Engine::InitScene()
 {
-	// 쉐이더 컴파일 및 생성
-	// 메시 정점 데이터 초기화
 	if (!textureShader.Init(device.Get(), L"potato.png")) return false;
-	if (!meshUV.InitBuffers(device.Get(), textureShader.ShaderBuffer())) return false;
+	if (!modelUV.InitBuffers(device.Get(), textureShader.ShaderBuffer(), "cube.fbx")) return false;
+	modelUV.SetScale(0.2f, 0.2f, 0.2f);
 	return true;
 }
 

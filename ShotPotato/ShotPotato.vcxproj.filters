@@ -46,6 +46,12 @@
     <Filter Include="소스 파일\Texture">
       <UniqueIdentifier>{2cc3482e-fb49-4503-987e-221b9e4818db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Buffer">
+      <UniqueIdentifier>{4ebadd8a-6374-4c96-96ae-c1f281be281f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Buffer">
+      <UniqueIdentifier>{b0d2c5ae-12c1-4df4-8e7e-6fe0409e2bfc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -99,11 +105,17 @@
     <ClCompile Include="TextureMappingShader.cpp">
       <Filter>소스 파일\Shader</Filter>
     </ClCompile>
-    <ClCompile Include="MeshUV.cpp">
+    <ClCompile Include="ModelUV.cpp">
       <Filter>소스 파일\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="TransformBuffer.cpp">
       <Filter>소스 파일\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>소스 파일\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexBuffer.cpp">
+      <Filter>소스 파일\Buffer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -155,11 +167,17 @@
     <ClInclude Include="TextureMappingShader.h">
       <Filter>헤더 파일\Shader</Filter>
     </ClInclude>
-    <ClInclude Include="MeshUV.h">
+    <ClInclude Include="ModelUV.h">
       <Filter>헤더 파일\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="TransformBuffer.h">
       <Filter>헤더 파일\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>헤더 파일\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexBuffer.h">
+      <Filter>헤더 파일\Buffer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
