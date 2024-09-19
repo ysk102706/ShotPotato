@@ -11,6 +11,34 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
+	case WM_ACTIVATEAPP:
+	{
+		Keyboard::ProcessMessage(msg, wParam, lParam);
+		Mouse::ProcessMessage(msg, wParam, lParam);
+	}
+	return 0;
+	case WM_KEYUP:
+	case WM_KEYDOWN:
+	case WM_SYSKEYUP:
+	case WM_SYSKEYDOWN:
+	{
+		Keyboard::ProcessMessage(msg, wParam, lParam);
+	}
+	return 0;
+	case WM_INPUT:
+	case WM_MOUSEMOVE:
+	case WM_LBUTTONDOWN:
+	case WM_LBUTTONUP:
+	case WM_RBUTTONDOWN:
+	case WM_RBUTTONUP:
+	case WM_MBUTTONDOWN:
+	case WM_MBUTTONUP:
+	case WM_MOUSEWHEEL:
+	case WM_MOUSEHOVER:
+	{
+		Mouse::ProcessMessage(msg, wParam, lParam);
+	}
+	return 0;
 	}
 
 	return DefWindowProc(hwnd, msg, wParam, lParam);
@@ -53,6 +81,8 @@ bool Window::InitWindow(HINSTANCE hInstance, int width, int height, std::wstring
 
 	ShowWindow(hwnd, SW_SHOW);
 	UpdateWindow(hwnd);
+
+	InputProcessor::InitInput(hwnd);
 
 	return true;
 }

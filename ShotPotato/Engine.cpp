@@ -23,6 +23,13 @@ int Engine::Run() {
 			DispatchMessage(&msg);
 		}
 		else {
+			if (InputProcessor::IsKeyDown(Keyboard::Keys::Escape)) {
+				if (MessageBox(nullptr, L"종료하시겠습니까?", L"종료", MB_YESNO) == IDYES) {
+					DestroyWindow(Window::GetHWND());
+					return 0;
+				}
+			}
+
 			Update();
 			Draw();
 		}
@@ -32,6 +39,22 @@ int Engine::Run() {
 }
 
 void Engine::Update() {
+	static float moveSpeed = 0.1f;
+	if (InputProcessor::IsKeyDown(Keyboard::Keys::W)) camera.MoveForward(moveSpeed);
+	if (InputProcessor::IsKeyDown(Keyboard::Keys::S)) camera.MoveForward(-moveSpeed);
+	if (InputProcessor::IsKeyDown(Keyboard::Keys::A)) camera.MoveRight(-moveSpeed);
+	if (InputProcessor::IsKeyDown(Keyboard::Keys::D)) camera.MoveRight(moveSpeed);
+	if (InputProcessor::IsKeyDown(Keyboard::Keys::Q)) camera.MoveUp(moveSpeed);
+	if (InputProcessor::IsKeyDown(Keyboard::Keys::E)) camera.MoveUp(-moveSpeed);
+
+	Mouse::State state = InputProcessor::MouseState();
+	static float rotationSpeed = 0.2f;
+	if (state.leftButton == true) {
+		camera.Yaw((float)state.x * rotationSpeed);
+		camera.Pitch((float)state.y * rotationSpeed);
+	}
+
+	camera.UpdateCamera();
 	modelUV.UpdateBuffers(deviceContext.Get());
 }
 
@@ -40,6 +63,8 @@ void Engine::Draw()
 	float backgroundColor[4] = { 0, 0.75f, 0, 1 };
 
 	deviceContext.Get()->ClearRenderTargetView(renderTargetView.Get(), backgroundColor);
+
+	camera.BindBuffer(deviceContext.Get());
 
 	textureShader.Bind(deviceContext.Get());
 
@@ -50,9 +75,24 @@ void Engine::Draw()
 
 bool Engine::InitScene()
 {
+	camera = Camera(
+		70.0f * Math::Deg2Rad,
+		(float)Window::Width(),
+		(float)Window::Height(),
+		0.1f,
+		1000.0f
+	);
+
+	camera.SetPosition(0.0f, 0.0f, -10.0f);
+
+	if (!camera.CreateBuffer(device.Get())) return false;
+
 	if (!textureShader.Init(device.Get(), L"potato.png")) return false;
 	if (!modelUV.InitBuffers(device.Get(), textureShader.ShaderBuffer(), "cube.fbx")) return false;
-	modelUV.SetScale(0.2f, 0.2f, 0.2f);
+	modelUV.SetPosition(4.0f, 5.0f, 6.0f);
+	modelUV.SetRotation(20.0f, 80.0f, 50.0f);
+	modelUV.SetScale(1.0f, 1.0f, 1.0f);
+
 	return true;
 }
 

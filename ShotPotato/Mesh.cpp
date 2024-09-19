@@ -1,6 +1,6 @@
 #include "Mesh.h"
 
-Mesh::Mesh() {
+Mesh::Mesh() : vertexBuffer(), indexBuffer(), inputLayout(), transform(), position(Vector3::zero), rotation(Vector3::zero), scale(Vector3::one) {
 
 }
 
@@ -10,22 +10,21 @@ void Mesh::RenderBuffers(ID3D11DeviceContext* deviceContext) {
 }
 
 void Mesh::BindBuffers(ID3D11DeviceContext* deviceContext) {
-	unsigned int stride = sizeof(Vertex);
-	unsigned int offset = 0;
+	vertexBuffer.Bind(deviceContext);
+	indexBuffer.Bind(deviceContext);
+	inputLayout.Bind(deviceContext);
 
-	deviceContext->IASetVertexBuffers(0, 1, vertexBuffer.GetAddressOf(), &stride, &offset);
-	deviceContext->IASetInputLayout(inputLayout.Get());
 	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 	transform.Bind(deviceContext);
 }
 
 void Mesh::DrawBuffers(ID3D11DeviceContext* deviceContext) {
-	deviceContext->Draw(vertexCount, 0);
+	deviceContext->DrawIndexed(indexBuffer.Count(), 0, 0);
 }
 
 void Mesh::UpdateBuffers(ID3D11DeviceContext* deivceContext) {
-	transform.matrix = Matrix4::Scale(scale) * Matrix4::Rotation(rotation) * Matrix4::Translation(position);
+	transform.matrix = Matrix4::Translation(position) * Matrix4::Rotation(rotation) * Matrix4::Scale(scale);
 }
 
 void Mesh::SetPosition(float x, float y, float z) {

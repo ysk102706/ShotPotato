@@ -6,7 +6,7 @@ int WINAPI wWinMain(
 	PWSTR pCmdLine,
 	int nCmdShow)
 {
-	Engine engine = Engine(hInstance, 1280, 8000, L"Show Potato");
+	Engine engine(hInstance, 1280, 800, L"Show Potato");
 
 	engine.Run();
 

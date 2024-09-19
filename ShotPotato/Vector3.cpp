@@ -26,7 +26,7 @@ Vector3 Vector3::Normalize() {
 Vector3 Vector3::Cross(const Vector3& oth) {
 	float _x = y * oth.z - z * oth.y;
 	float _y = z * oth.x - x * oth.z;
-	float _z = x * oth.y - y * oth.y;
+	float _z = x * oth.y - y * oth.x;
 	return Vector3(_x, _y, _z);
 }
 

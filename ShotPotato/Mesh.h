@@ -3,6 +3,9 @@
 #include <wrl.h>
 #include <d3d11.h>
 #include "TransformBuffer.h"
+#include "VertexBuffer.h"
+#include "IndexBuffer.h"
+#include "InputLayout.h"
 
 using Microsoft::WRL::ComPtr;
 
@@ -31,9 +34,9 @@ public:
 	void SetScale(Vector3 scale);
 
 protected:
-	int vertexCount;
-	ComPtr<ID3D11Buffer> vertexBuffer;
-	ComPtr<ID3D11InputLayout> inputLayout;
+	VertexBuffer vertexBuffer;
+	IndexBuffer indexBuffer;
+	InputLayout inputLayout;
 
 	TransformBuffer transform;
 

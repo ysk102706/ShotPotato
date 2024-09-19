@@ -11,7 +11,4 @@ public:
 
 	bool InitBuffers(ID3D11Device* deivce, ID3DBlob* vsBuffer) override;
 	bool InitBuffers(ID3D11Device* deivce, ID3DBlob* vsBuffer, std::string modelFileName);
-
-private:
-	void BindBuffers(ID3D11DeviceContext* deviceContext) override;
 };

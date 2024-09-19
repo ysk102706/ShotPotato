@@ -52,6 +52,18 @@
     <Filter Include="헤더 파일\Buffer">
       <UniqueIdentifier>{b0d2c5ae-12c1-4df4-8e7e-6fe0409e2bfc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Camera">
+      <UniqueIdentifier>{5556a05a-4094-45d9-b1e5-f6cca3119bc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Input">
+      <UniqueIdentifier>{6ce148ed-5ec5-495b-bccb-da1540d454c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Input">
+      <UniqueIdentifier>{dc8001ee-19b1-4a32-bb34-585525118459}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Camera">
+      <UniqueIdentifier>{44527530-aaa2-4bb6-a77d-a02f0a47f1c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -117,6 +129,15 @@
     <ClCompile Include="IndexBuffer.cpp">
       <Filter>소스 파일\Buffer</Filter>
     </ClCompile>
+    <ClCompile Include="InputLayout.cpp">
+      <Filter>소스 파일\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>소스 파일\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="InputProcessor.cpp">
+      <Filter>소스 파일\Input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -178,6 +199,15 @@
     </ClInclude>
     <ClInclude Include="IndexBuffer.h">
       <Filter>헤더 파일\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>헤더 파일\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="InputLayout.h">
+      <Filter>헤더 파일\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="InputProcessor.h">
+      <Filter>헤더 파일\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

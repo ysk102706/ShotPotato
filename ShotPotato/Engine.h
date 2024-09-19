@@ -5,6 +5,8 @@
 #include <wrl.h>
 #include "ModelUV.h"
 #include "TextureMappingShader.h"
+#include "InputProcessor.h"
+#include "Camera.h"
 
 using Microsoft::WRL::ComPtr;
 
@@ -31,4 +33,6 @@ private:
 	TextureMappingShader textureShader;
 
 	ModelUV modelUV;
+
+	Camera camera;
 };
